@@ -9,35 +9,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
-    :root {
+    :root{
       --sky-top: #E0F4E0;
       --sky-bottom: #C8E6C9;
       --grass: #689F38;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html, body {
-      height: 100%;
-      width: 100%;
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;width:100%}
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
-      margin: 0;
-      padding: 0;
+      background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-bottom) 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
       overflow-x: hidden;
-      overflow-y: auto;
       position: relative;
     }
 
-    /* Fix background park */
+    /* Park Silhouette fixed */
     .park {
       position: fixed;
       left: 0;
@@ -48,13 +41,21 @@
       z-index: 0;
       pointer-events: none;
     }
-    .park svg { width: 100%; height: 100%; display: block; }
-    .park .fade { opacity: 0.06; }
 
-    /* Title & subtitle */
+    .park svg{
+      display:block;
+      width:100%;
+      height:100%;
+    }
+
+    .park .fade {
+      opacity: 0.06;
+    }
+
     .title {
-      font-size: 42px;
+      font-size: 54px;
       font-family: 'Pacifico', cursive;
+      font-weight: 700;
       color: #2e7d32;
       text-align: center;
       margin-top: 30px;
@@ -71,32 +72,22 @@
       z-index: 10;
     }
 
-    /* Review box - fixed height with auto-fit text */
     .review-box {
-      width: 80%;
-      max-width: 700px;
-      height: 180px; /* Fixed box height */
+      width: calc(80% - 8px); /* width 8px kam */
+      max-width: 692px; /* original 700 - 8 */
       background: #f7f7f7;
       border-radius: 30px;
-      padding: 24px;
+      padding: 28px; /* 4px zyada height */
+      font-size: 17px;
       color: #333;
+      line-height: 1.6;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      position: relative;
       text-align: left;
+      position: relative;
       z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    #reviewText {
-      width: 100%;
-      margin: 0;
-      line-height: 1.4;
-      font-size: clamp(14px, 4vw, 18px); /* Auto adjust font size */
       overflow-wrap: break-word;
-      overflow: hidden;
+      word-wrap: break-word;
+      hyphens: auto;
     }
 
     .copy-btn {
@@ -110,13 +101,13 @@
       border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
-      font-size: 14px;
       transition: 0.3s;
     }
 
-    .copy-btn:hover { background: #0d47a1; }
+    .copy-btn:hover {
+      background: #0d47a1;
+    }
 
-    /* Google button */
     .google-btn {
       display: inline-block;
       margin-top: 40px;
@@ -125,7 +116,6 @@
       color: #fff;
       font-weight: 600;
       padding: 12px 18px;
-      font-size: 14px;
       background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
       background-size: 300% 300%;
       animation: colorShift 6s infinite alternate;
@@ -199,71 +189,54 @@
     <p>By using this page, you agree that reviews reflect personal experience only.</p>
   </div>
 
-  <!-- Fixed Park Silhouette Background -->
+  <!-- Park silhouette background fixed -->
   <div class="park" aria-hidden="true">
     <svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
       <defs><style>.g-fill{ fill: #689F38; }</style></defs>
       <path class="g-fill" d="M0,180C80,160 160,150 260,160C360,170 460,145 560,160C660,175 760,150 860,160C920,166 980,160 1000,160L1000,300 L0,300 Z"/>
       <path class="g-fill" d="M0,200Q80,180 160,190T320,185T480,190T640,185T800,195T960,190L1000,220 L1000,300 L0,300 Z"/>
+      <g transform="translate(70,40)"><path class="g-fill" d="M70,40c40,-10 85,8 95,48c12,44 -18,76 -62,72c-22,-2 -38,-18 -46,-33C46,100 38,75 50,56C54,48 60,42 70,40Z"/><rect x="68" y="130" width="14" height="40" rx="3" class="g-fill"/></g>
+      <g transform="translate(270,68)"><path class="g-fill" d="M40,36c18,-12 48,-8 64,12c18,22 6,56 -24,64c-38,10 -64,-26 -56,-56c4,-14 12,-20 16,-20z"/><rect x="46" y="86" width="8" height="26" rx="2" class="g-fill"/><g transform="translate(-20,110)"><rect x="0" y="0" width="120" height="10" rx="3" class="g-fill"/><rect x="0" y="12" width="120" height="8" rx="2" class="g-fill"/><rect x="6" y="20" width="8" height="28" rx="2" class="g-fill"/><rect x="106" y="20" width="8" height="28" rx="2" class="g-fill"/></g></g>
+      <g transform="translate(520,36)"><path class="g-fill" d="M64,30c30,-12 64,6 74,36c12,38 -8,66 -46,68c-32,1 -58,-30 -54,-60c2,-18 14,-28 26,-34z"/><rect x="60" y="120" width="12" height="36" rx="2" class="g-fill"/></g>
+      <g transform="translate(680,120)"><rect x="0" y="0" width="150" height="12" rx="3" class="g-fill"/><rect x="0" y="-10" width="150" height="10" rx="3" class="g-fill"/><rect x="12" y="14" width="12" height="36" rx="2" class="g-fill"/><rect x="126" y="14" width="12" height="36" rx="2" class="g-fill"/></g>
+      <g transform="translate(820,32)"><path class="g-fill" d="M50,30c22,-8 46,6 58,30c14,28 4,52 -26,58c-28,6 -64,-18 -54,-50c4,-14 12,-24 22,-38z"/><rect x="46" y="110" width="14" height="38" rx="2" class="g-fill"/></g>
+      <g transform="translate(920,54)"><path class="g-fill" d="M36,34c14,-8 30,-6 44,10c16,18 8,44 -18,50c-24,6 -46,-10 -40,-36c3,-12 10,-22 14,-24z"/><rect x="46" y="106" width="8" height="36" rx="2" class="g-fill"/></g>
+      <g transform="translate(970,125)"><rect x="8" y="0" width="6" height="50" rx="2" class="g-fill"/><rect x="-8" y="-12" width="30" height="14" rx="3" class="g-fill"/></g>
+      <g transform="translate(760,20)" fill="none" stroke="#689F38" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.88"><path d="M40 10 q6 -6 12 0"/><path d="M54 6 q6 -6 12 0"/><path d="M22 14 q6 -6 10 0"/><path d="M72 18 q4 -4 8 0"/></g>
       <rect x="0" y="230" width="1000" height="70" fill="#000" class="fade"/>
     </svg>
   </div>
 
   <script>
     const reviews = [
-      "The team's timing was perfect; they set up and served exactly on schedule. Flawless execution and genuinely tasty food throughout the event.",
-  "I was so impressed by how organized the buffet was. The staff managed the guest flow without any queues, and the food was delicious.",
-  "Aditya Caterers handles all the logistics brilliantly. Their professional management allowed me to finally relax and enjoy my own party.",
-  "Everything was perfectly coordinated, from the kitchen prep to the table service. The staff are highly professional and the food was excellent.",
-  "I appreciated their detailed planning consultation and execution. Every item arrived and was served exactly as promised; a truly delicious meal.",
-  "Zero stress! They managed the entire event catering with absolute precision and grace. Exceptional service and very delicious food.",
-  "The entire service team worked like a well-oiled machine, polite and efficient. I couldn't fault their organization or the delicious meal.",
-  "They came, they conquered, and they left the place spotless. High standards of professionalism and a delightful, delicious menu.",
-  "The management provided clear communication throughout the whole process. Their staff are professional, and the food was universally loved.",
-  "Impressive attention to the smallest operational details. The service was smooth and the food quality was consistently delicious.",
-
-  // B. Focusing on Taste & Culinary Quality
-  "The food was seasoned perfectly and had that authentic, rich flavour. It was honestly the most delicious catering I’ve ever tasted.",
-  "Every dish felt premium, made with high-quality ingredients. Their chef truly knows how to make genuinely delicious food.",
-  "We were pleasantly surprised by the depth of flavour in the vegetarian options. A delightful and professional experience all around.",
-  "The desserts were light, fresh, and not overly sweet—a perfect finish. Great taste and a professional serving staff.",
-  "The spice levels were balanced exactly as we requested. Truly delicious food that catered perfectly to our regional palate.",
-  "Their signature biryani was the highlight; fragrant and incredibly delicious. The staff are professional and delivered hot food on time.",
-  "I loved that the food didn't taste like typical banquet fare; it was home-style delicious. Professional service from start to end.",
-  "The appetizers were crisp and hot, and every course that followed was delicious. They maintained the food temperature perfectly.",
-  "We enjoyed the fresh, vibrant taste of their salads and accompaniments. The entire menu was well-curated and very delicious.",
-  "The food was so satisfying and flavourful; they use great recipes. Their staff are professional and provide wonderful, genuine service.",
-
-  // C. Focusing on Staff Attitude & Service
-  "The serving staff were genuinely warm and showed great initiative. Highly professional team and deliciously satisfying food.",
-  "I noticed the staff were incredibly patient and helpful with the older guests. Truly professional service and great, delicious catering.",
-  "The servers were always attentive but never intrusive, just perfect. Such professional manners and a truly delicious meal.",
-  "Their team had a calming and positive presence throughout the event. Excellent professional service and fantastic, delicious food.",
-  "We appreciated how quickly the staff handled all the refills and requests. Prompt, professional, and the food was extremely delicious.",
-  "Every staff member we interacted with was courteous and respectful. High marks for professionalism and the genuinely delicious menu.",
-  "The chefs and service manager were personable and clearly passionate. Professional to a fault, and the food was outstandingly delicious.",
-  "They paid close attention to our guests' glass and plate clearing, very professional. Seamless service and delicious food.",
-  "The staff had a great understanding of the menu and service flow. A very professional and well-trained team serving delicious food.",
-  "Their polite demeanor and smiles made a huge difference to the ambiance. Truly professional service with delicious food to match.",
-
-  // D. Focusing on Event Impact & Value
-  "Aditya Caterers transformed our casual event into a memorable feast. Great value for money and genuinely delicious, professional service.",
-  "The catering was the biggest talking point of the whole event! Exceptional professionalism and incredibly delicious food.",
-  "They absolutely surpassed our expectations for both service and food quality. Best professional caterers we have ever hired.",
-  "We feel we received a premium experience at a very reasonable cost. Excellent management and genuinely delicious food.",
-  "The impact of their well-presented and delicious food was huge. Hiring them made the entire event a massive success.",
-  "They made us look like wonderful hosts, thanks to their superb servic"
+      "Komal Caterers is simply outstanding! The entire staff was so professional and attentive during my brother's birthday party. Full marks for their seamless service!",
+      "The food at Komal Caterers is genuinely delicious! Every dish was flavourful and prepared perfectly. It was the highlight of our recent anniversary celebration.",
+      "Hosting my bestie's birthday at Komal Caterers was the best decision. The event was exceptionally well-managed. Absolutely professional execution!",
+      "The staff here truly defines professionalism. They managed the crowd and service with such grace. All credit goes to Komal Caterers for their excellent team.",
+      "A delightful experience! Delicious food, perfect service, and an amazing setup. A must-try catering service for special occasions."
     ];
 
     const randomReview = reviews[Math.floor(Math.random() * reviews.length)];
-    document.getElementById("reviewText").innerText = randomReview;
+    const reviewText = document.getElementById("reviewText");
+    reviewText.innerText = randomReview;
+
+    // auto text resizing to fit box
+    const resizeText = () => {
+      let size = 17;
+      while (reviewText.scrollHeight > reviewText.offsetHeight && size > 10) {
+        size--;
+        reviewText.style.fontSize = size + "px";
+      }
+    };
+    window.onload = resizeText;
+    window.onresize = resizeText;
 
     document.getElementById("copyBtn").addEventListener("click", async function() {
       try {
         await navigator.clipboard.writeText(randomReview);
         this.innerText = "Copied ✓";
         setTimeout(() => this.innerText = "Copy Text", 2000);
-      } catch (err) {
+      } catch {
         alert("Copy failed — please copy manually.");
       }
     });
