@@ -16,15 +16,11 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html, body {
-      height: 100%;
-      width: 100%;
-    }
+    html, body { height: 100%; width: 100%; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
+      background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-bottom) 100%);
       margin: 0;
       padding: 0;
       display: flex;
@@ -33,34 +29,40 @@
       justify-content: center;
       min-height: 100vh;
       overflow-x: hidden;
-      overflow-y: auto;
       position: relative;
     }
 
-    /* Fix background park */
-    .park {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 28vh;
-      min-height: 220px;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .park svg { width: 100%; height: 100%; display: block; }
-    .park .fade { opacity: 0.06; }
-
-    /* Title & subtitle */
-    .title {
-      font-size: 42px;
-      font-family: 'Pacifico', cursive;
-      color: #2e7d32;
+    /* Title (Citykart style adapted for Komal Caterers) */
+    .logo {
+      font-size: 54px;
+      font-weight: bold;
       text-align: center;
+      position: relative;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
       margin-top: 30px;
       margin-bottom: 10px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
       z-index: 10;
+    }
+
+    .logo .city {
+      color: #1b5e20; /* Dark green */
+    }
+
+    .logo .kart {
+      color: #43a047; /* Light green */
+      font-family: 'Pacifico', cursive;
+      position: relative;
+    }
+
+    .logo .leaf {
+      position: absolute;
+      top: -22px;
+      right: -22px;
+      width: 22px;
+      height: 22px;
+      background: #43a047;
+      border-radius: 0 50% 0 50%;
+      transform: rotate(45deg);
     }
 
     .subtitle {
@@ -71,32 +73,19 @@
       z-index: 10;
     }
 
-    /* Review box - adjusted size */
     .review-box {
-      width: calc(80% - 8px); /* 8px narrower */
-      max-width: 692px;       /* 700 - 8 */
-      height: 184px;          /* 180 + 4 */
+      width: 80%;
+      max-width: 700px;
       background: #f7f7f7;
       border-radius: 30px;
       padding: 24px;
+      font-size: 17px;
       color: #333;
+      line-height: 1.6;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      position: relative;
       text-align: left;
+      position: relative;
       z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    #reviewText {
-      width: 100%;
-      margin: 0;
-      line-height: 1.4;
-      font-size: clamp(14px, 4vw, 18px); /* Auto adjust font size */
-      overflow-wrap: break-word;
-      overflow: hidden;
     }
 
     .copy-btn {
@@ -110,13 +99,11 @@
       border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
-      font-size: 14px;
       transition: 0.3s;
     }
 
     .copy-btn:hover { background: #0d47a1; }
 
-    /* Google button */
     .google-btn {
       display: inline-block;
       margin-top: 40px;
@@ -125,7 +112,6 @@
       color: #fff;
       font-weight: 600;
       padding: 12px 18px;
-      font-size: 14px;
       background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
       background-size: 300% 300%;
       animation: colorShift 6s infinite alternate;
@@ -172,11 +158,27 @@
       line-height: 1.4;
       z-index: 10;
     }
+
+    /* Park background */
+    .park {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 28vh;
+      min-height: 220px;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .park svg { display: block; width: 100%; height: 100%; }
+    .park .fade { opacity: 0.06; }
   </style>
 </head>
-
 <body>
-  <div class="title">Komal Caterers</div>
+  <div class="logo">
+    <span class="city">Komal</span><span class="kart">Caterers<span class="leaf"></span></span>
+  </div>
+
   <div class="subtitle">To give review copy the text</div>
 
   <div class="review-box" id="reviewBox">
@@ -199,8 +201,8 @@
     <p>By using this page, you agree that reviews reflect personal experience only.</p>
   </div>
 
-  <!-- Fixed Park Silhouette Background -->
   <div class="park" aria-hidden="true">
+    <!-- Park SVG same as before -->
     <svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
       <defs><style>.g-fill{ fill: #689F38; }</style></defs>
       <path class="g-fill" d="M0,180C80,160 160,150 260,160C360,170 460,145 560,160C660,175 760,150 860,160C920,166 980,160 1000,160L1000,300 L0,300 Z"/>
@@ -211,16 +213,11 @@
 
   <script>
     const reviews = [
-      "Komal Caterers is simply outstanding! The entire staff was so professional and attentive during my brother's birthday party.",
-      "The food at Komal Caterers is genuinely delicious! Every dish was flavourful and prepared perfectly.",
-      "Hosting our event with Komal Caterers was the best decision. Everything was beautifully managed!",
-      "The staff defines professionalism. They handled everything with great care.",
-      "Delicious food, perfect service, and amazing setup — a must-try experience!",
-      "We celebrated our parents' anniversary here, and everyone was so happy!",
-      "If you want rich flavours and true hospitality, Komal Caterers is unbeatable.",
-      "Unmatched service quality! Everything was handled perfectly.",
-      "Guests can’t stop praising the food and arrangements!",
-      "The live food counters were exciting and full of flavour!"
+      "Komal Caterers is simply outstanding! The entire staff was so professional and attentive during my brother's birthday party. Full marks for their seamless service!",
+      "The food at Komal Caterers is genuinely delicious! Every dish was flavourful and prepared perfectly. It was the highlight of our recent anniversary celebration.",
+      "Hosting my bestie's birthday at Komal Caterers was the best decision. The event was exceptionally well-managed. Absolutely professional execution!",
+      "The staff here truly defines professionalism. They managed the crowd and service with such grace. All credit goes to Komal Caterers for their excellent team.",
+      "A delightful experience! Delicious food, perfect service, and an amazing setup. A must-try catering service for special occasions."
     ];
 
     const randomReview = reviews[Math.floor(Math.random() * reviews.length)];
