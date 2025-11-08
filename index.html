@@ -3,11 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title> komal caterers </title>
+  <title>Komal Caterers</title>
+
+  <!-- Pacifico font for title -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
   <style>
+    :root{
+      --sky-top: #E0F4E0;     /* light / desaturated green / off-white */
+      --sky-bottom: #C8E6C9;  /* slightly deeper pastel green */
+      --grass: #689F38;       /* foreground silhouette color */
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;width:100%}
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #e3f2fd, #fff);
+      background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-bottom) 100%);
       margin: 0;
       padding: 0;
       display: flex;
@@ -15,17 +27,40 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Park Silhouette at bottom */
+    .park {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 28vh;
+      min-height: 220px;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .park svg{
+      display:block;
+      width:100%;
+      height:100%;
+    }
+    .park .fade {
+      opacity: 0.06;
     }
 
     .title {
-      font-size: 42px;
-      font-family: Arial, Helvetica, sans-serif;
+      font-size: 54px;
+      font-family: 'Pacifico', cursive;
       font-weight: 700;
-      color: #d32f2f;
+      color: #2e7d32;
       text-align: center;
       margin-top: 30px;
       margin-bottom: 10px;
-      background: linear-gradient(135deg, #e3f2fd, #fff);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+      z-index: 10;
     }
 
     .subtitle {
@@ -33,6 +68,7 @@
       text-align: center;
       color: #333;
       margin-bottom: 30px;
+      z-index: 10;
     }
 
     .review-box {
@@ -47,6 +83,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       text-align: left;
       position: relative;
+      z-index: 10;
     }
 
     .copy-btn {
@@ -62,7 +99,6 @@
       font-weight: 600;
       transition: 0.3s;
     }
-
     .copy-btn:hover {
       background: #0d47a1;
     }
@@ -78,8 +114,8 @@
       background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
       background-size: 300% 300%;
       animation: colorShift 6s infinite alternate;
+      z-index: 10;
     }
-
     @keyframes colorShift {
       0% { background-position: 0% 50%; }
       100% { background-position: 100% 50%; }
@@ -89,14 +125,13 @@
       margin-top: 10px;
       text-align: center;
       color: #000;
+      z-index: 10;
     }
-
     .star-section small {
       display: block;
       font-size: 10px;
       margin-bottom: 2px;
     }
-
     .stars {
       font-size: 22px;
       letter-spacing: 3px;
@@ -108,19 +143,21 @@
       font-family: 'Brush Script MT', cursive;
       color: #111;
       text-align: center;
+      z-index: 10;
     }
 
     .policy {
       font-size: 12px;
-      color: #777;
+      color: #555;
       text-align: center;
       margin-top: 20px;
       line-height: 1.4;
+      z-index: 10;
     }
   </style>
 </head>
 <body>
-  <div class="title">komal caterers</div>
+  <div class="title">Komal Caterers</div>
   <div class="subtitle">To give review copy the text</div>
 
   <div class="review-box" id="reviewBox">
@@ -143,51 +180,37 @@
     <p>By using this page, you agree that reviews reflect personal experience only.</p>
   </div>
 
-  <script>
-    const reviews = ["Komal Caterers is simply outstanding! The entire staff was so professional and attentive during my brother's birthday party. Full marks for their seamless service!",
-"The food at Komal Caterers is genuinely delicious! Every dish was flavourful and prepared perfectly. It was the highlight of our recent anniversary celebration.",
-"Hosting my bestie's birthday at Komal Caterers was the best decision. The event was exceptionally well-managed. Absolutely professional execution!",
-"The staff here truly defines professionalism. They managed the crowd and service with such grace. All credit goes to Komal Caterers for their excellent team.",
-"A delightful experience! Delicious food, perfect service, and an amazing setup. A must-try catering service for special occasions.",
-"We celebrated our parents' anniversary here, and everyone was so happy! Perfect decoration, smooth arrangements, and polite staff.",
-"My brother's birthday was a massive success thanks to Komal Caterers. Beautiful setup and flawless event planning!",
-"If you're looking for rich flavours, freshness, and true hospitality, Komal Caterers is unbeatable. Simply phenomenal catering experience!",
-"The team is extremely professional and supportive. They planned everything so well that we enjoyed our event stress-free. Highly recommended!",
-"Unmatched quality of service! The food was superb, and the management handled everything perfectly.",
-"The presentation and taste of food were world-class! Guests still can't stop praising our event arrangements.",
-"The smooth coordination and timely service show how experienced and well-trained the team is. Komal Caterers truly delivers excellence!",
-"They listened to every requirement and executed it beautifully. Felt like a royal celebration.",
-"The vibe was amazing! From food to decor, everything was handled with perfection.",
-"Their dedication to making events special is impressive. They treat every celebration like their own!",
-"Venue was spotless, hygienic, and beautifully arranged. Perfect for elegant events.",
-"Even after the event, guests kept praising the food and service. That says everything!",
-"Komal Caterers truly knows how to make events memorable. Our celebration was magical thanks to them!",
-"The event coordinator ensured every detail was perfect. Loved their professionalism.",
-"Best catering & event service — delicious food, smart staff, and beautifully managed setup every time.",
-"The decor was breathtaking — modern yet elegant. Perfect for classy celebrations!",
-"Snacks & mocktails were a hit! Unique flavours and beautifully presented dishes.",
-"Booking was easy and smooth — customized packages were value for money!",
-"Kid-friendly arrangements made the birthday party extra fun and comfortable.",
-"The desserts were heavenly — rich flavours, premium quality, and great variety!",
-"Ample parking space — very convenient for all guests.",
-"They even followed up after the event — shows true dedication!",
-"The sound system made the dance floor super energetic — perfect entertainment!",
-"Restrooms were extremely clean — great hygiene and maintenance.",
-"Staff was attentive & polite — premium hospitality experience.",
-"Outdoor lawn setup was stunning and added charm to our celebration.",
-"Great dietary options — vegan and gluten-free food was also delicious!",
-"Transparent pricing — no hidden charges at all.",
-"The hall design is flexible & aesthetic — matched our theme beautifully.",
-"Warm and welcoming staff — felt very personal and family-friendly service.",
-"Quick response to calls & messages — stress-free planning.",
-"Security & management were excellent — felt very safe throughout.",
-" The live food counters were super exciting and full of flavour — everyone loved watching fresh dishes being prepared!",
-"The decoration theme execution was 10/10 — classy, elegant, and perfectly matching our event vibe!",
-" Their chef deserves applause — restaurant style taste with premium hotel level service!",
-" Special thanks to the manager — very cooperative and helped with every detail patiently!"
+  <!-- Park silhouette background -->
+  <div class="park" aria-hidden="true">
+    <svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <defs><style>.g-fill{ fill: #689F38; }</style></defs>
+      <path class="g-fill" d="M0,180C80,160 160,150 260,160C360,170 460,145 560,160C660,175 760,150 860,160C920,166 980,160 1000,160L1000,300 L0,300 Z"/>
+      <path class="g-fill" d="M0,200Q80,180 160,190T320,185T480,190T640,185T800,195T960,190L1000,220 L1000,300 L0,300 Z"/>
+      <g transform="translate(70,40)"><path class="g-fill" d="M70,40c40,-10 85,8 95,48c12,44 -18,76 -62,72c-22,-2 -38,-18 -46,-33C46,100 38,75 50,56C54,48 60,42 70,40Z"/><rect x="68" y="130" width="14" height="40" rx="3" class="g-fill"/></g>
+      <g transform="translate(270,68)"><path class="g-fill" d="M40,36c18,-12 48,-8 64,12c18,22 6,56 -24,64c-38,10 -64,-26 -56,-56c4,-14 12,-20 16,-20z"/><rect x="46" y="86" width="8" height="26" rx="2" class="g-fill"/><g transform="translate(-20,110)"><rect x="0" y="0" width="120" height="10" rx="3" class="g-fill"/><rect x="0" y="12" width="120" height="8" rx="2" class="g-fill"/><rect x="6" y="20" width="8" height="28" rx="2" class="g-fill"/><rect x="106" y="20" width="8" height="28" rx="2" class="g-fill"/></g></g>
+      <g transform="translate(520,36)"><path class="g-fill" d="M64,30c30,-12 64,6 74,36c12,38 -8,66 -46,68c-32,1 -58,-30 -54,-60c2,-18 14,-28 26,-34z"/><rect x="60" y="120" width="12" height="36" rx="2" class="g-fill"/></g>
+      <g transform="translate(680,120)"><rect x="0" y="0" width="150" height="12" rx="3" class="g-fill"/><rect x="0" y="-10" width="150" height="10" rx="3" class="g-fill"/><rect x="12" y="14" width="12" height="36" rx="2" class="g-fill"/><rect x="126" y="14" width="12" height="36" rx="2" class="g-fill"/></g>
+      <g transform="translate(820,32)"><path class="g-fill" d="M50,30c22,-8 46,6 58,30c14,28 4,52 -26,58c-28,6 -64,-18 -54,-50c4,-14 12,-24 22,-38z"/><rect x="46" y="110" width="14" height="38" rx="2" class="g-fill"/></g>
+      <g transform="translate(920,54)"><path class="g-fill" d="M36,34c14,-8 30,-6 44,10c16,18 8,44 -18,50c-24,6 -46,-10 -40,-36c3,-12 10,-22 14,-24z"/><rect x="46" y="106" width="8" height="36" rx="2" class="g-fill"/></g>
+      <g transform="translate(970,125)"><rect x="8" y="0" width="6" height="50" rx="2" class="g-fill"/><rect x="-8" y="-12" width="30" height="14" rx="3" class="g-fill"/></g>
+      <g transform="translate(760,20)" fill="none" stroke="#689F38" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.88"><path d="M40 10 q6 -6 12 0"/><path d="M54 6 q6 -6 12 0"/><path d="M22 14 q6 -6 10 0"/><path d="M72 18 q4 -4 8 0"/></g>
+      <rect x="0" y="230" width="1000" height="70" fill="#000" class="fade"/>
+    </svg>
+  </div>
 
- 
-];
+  <script>
+    const reviews = [
+      "Komal Caterers is simply outstanding! The entire staff was so professional and attentive during my brother's birthday party. Full marks for their seamless service!",
+      "The food at Komal Caterers is genuinely delicious! Every dish was flavourful and prepared perfectly. It was the highlight of our recent anniversary celebration.",
+      "Hosting my bestie's birthday at Komal Caterers was the best decision. The event was exceptionally well-managed. Absolutely professional execution!",
+      "The staff here truly defines professionalism. They managed the crowd and service with such grace. All credit goes to Komal Caterers for their excellent team.",
+      "A delightful experience! Delicious food, perfect service, and an amazing setup. A must-try catering service for special occasions.",
+      "We celebrated our parents' anniversary here, and everyone was so happy! Perfect decoration, smooth arrangements, and polite staff.",
+      "If you're looking for rich flavours, freshness, and true hospitality, Komal Caterers is unbeatable. Simply phenomenal catering experience!",
+      "Unmatched quality of service! The food was superb, and the management handled everything perfectly.",
+      "The presentation and taste of food were world-class! Guests still can't stop praising our event arrangements.",
+      "The live food counters were super exciting and full of flavour — everyone loved watching fresh dishes being prepared!"
+    ];
 
     const randomReview = reviews[Math.floor(Math.random() * reviews.length)];
     document.getElementById("reviewText").innerText = randomReview;
