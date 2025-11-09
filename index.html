@@ -3,119 +3,90 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Komal Caterers</title>
+  <title>maple banquet</title>
 
-  <!-- Pacifico font for title -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://search.google.com/local/writereview?placeid=ChIJ704Msm_rwjsR3gIxUmMibJI" rel="stylesheet">
 
   <style>
-    :root {
-      --sky-top: #E0F4E0;
-      --sky-bottom: #C8E6C9;
-      --grass: #689F38;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; width: 100%; }
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-bottom) 100%);
-      margin: 0;
-      padding: 0;
+      background-image: url('https://github.com/socialinfi321-svgph/komal/raw/main/1762664728696.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Title (Citykart style adapted for Komal Caterers) */
-    .logo {
-      font-size: 54px;
-      font-weight: bold;
+      justify-content: flex-start;
       text-align: center;
-      position: relative;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-      margin-top: 30px;
-      margin-bottom: 10px;
-      z-index: 10;
-    }
-
-    .logo .city {
-      color: #1b5e20; /* Dark green */
-    }
-
-    .logo .kart {
-      color: #43a047; /* Light green */
-      font-family: 'Pacifico', cursive;
-      position: relative;
-    }
-
-    .logo .leaf {
-      position: absolute;
-      top: -22px;
-      right: -22px;
-      width: 22px;
-      height: 22px;
-      background: #43a047;
-      border-radius: 0 50% 0 50%;
-      transform: rotate(45deg);
+      padding-top: 197px;
     }
 
     .subtitle {
-      font-size: 18px;
-      text-align: center;
+      font-size: 14px;
       color: #333;
-      margin-bottom: 30px;
-      z-index: 10;
+      margin-bottom: 15px;
+      font-weight: 700;
     }
 
     .review-box {
-      width: 80%;
-      max-width: 700px;
-      background: #f7f7f7;
-      border-radius: 30px;
-      padding: 24px;
-      font-size: 17px;
+      width: 90%;
+      max-width: 650px;
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 25px;
+      padding: 20px 24px;
+      font-size: 15px;
+      font-family: 'Saira', Arial, Helvetica, sans-serif;
+      font-weight: 800;
       color: #333;
-      line-height: 1.6;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      line-height: 1.5;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
       text-align: left;
       position: relative;
-      z-index: 10;
+      margin-bottom: 10px;
     }
 
     .copy-btn {
       position: absolute;
-      bottom: -16px;
-      left: 30px;
+      bottom: -14px;
+      left: 24px;
       background: #1976d2;
       color: white;
       border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
+      padding: 3px 8px;
+      border-radius: 6px;
       cursor: pointer;
       font-weight: 600;
+      font-size: 13px;
       transition: 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
-    .copy-btn:hover { background: #0d47a1; }
+    .copy-btn:hover {
+      background: #0d47a1;
+    }
 
     .google-btn {
       display: inline-block;
-      margin-top: 40px;
+      margin-top: 35px;
       border-radius: 8px;
       text-decoration: none;
       color: #fff;
       font-weight: 600;
-      padding: 12px 18px;
+      font-size: 15px;
+      padding: 11px 20px;
       background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
-      background-size: 300% 300%;
-      animation: colorShift 6s infinite alternate;
-      z-index: 10;
+      background-size: 500% 500%;
+      animation: colorShift 2s infinite alternate;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.25), 0 0 8px rgba(66, 133, 244, 0.3);
     }
 
     @keyframes colorShift {
@@ -124,114 +95,133 @@
     }
 
     .star-section {
-      margin-top: 10px;
+      margin-top: 40px;
       text-align: center;
       color: #000;
-      z-index: 10;
     }
 
-    .star-section small {
+    .star-section .top-text {
       display: block;
       font-size: 10px;
       margin-bottom: 2px;
+      color: #000;
+      font-weight: 500;
     }
 
     .stars {
       font-size: 22px;
       letter-spacing: 3px;
+      margin: 0;
+    }
+
+    .star-section .bottom-text {
+      display: block;
+      font-size: 10px;
+      margin-top: 2px;
+      color: #000;
+      font-weight: 500;
     }
 
     .thanks {
-      margin-top: 40px;
+      margin-top: 30px;
       font-size: 22px;
       font-family: 'Brush Script MT', cursive;
       color: #111;
       text-align: center;
-      z-index: 10;
     }
 
     .policy {
       font-size: 12px;
-      color: #555;
+      color: #3b2121;
       text-align: center;
-      margin-top: 20px;
+      margin-top: 3px;
       line-height: 1.4;
-      z-index: 10;
+      max-width: 650px;
     }
-
-    /* Park background */
-    .park {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 28vh;
-      min-height: 220px;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .park svg { display: block; width: 100%; height: 100%; }
-    .park .fade { opacity: 0.06; }
   </style>
 </head>
 <body>
-  <div class="logo">
-    <span class="city">Komal</span><span class="kart">Caterers<span class="leaf"></span></span>
-  </div>
-
-  <div class="subtitle">To give review copy the text</div>
+  <div class="subtitle">To give review, copy the text below 👇</div>
 
   <div class="review-box" id="reviewBox">
-    <p id="reviewText"></p>
+    <p id="reviewText">Loading review...</p>
     <button class="copy-btn" id="copyBtn">Copy Text</button>
   </div>
 
-  <a href="https://search.google.com/local/writereview?placeid=ChIJ704Msm_rwjsR3gIxUmMibJI" target="_blank" rel="noopener" class="google-btn">Google Reviews</a>
+  <a href="https://search.google.com/local/writereview?placeid=ChIJjRMtTvtZ7TkRonCm0RudOas" target="_blank" rel="noopener" class="google-btn">
+    Google Reviews
+  </a>
 
   <div class="star-section">
-    <small>like only give</small>
+    <span class="top-text">Only give</span>
     <div class="stars">⭐⭐⭐⭐⭐</div>
-    <small>May your day not be good but great!</small>
+    <span class="bottom-text">May your day not be good but great</span>
   </div>
 
-  <div class="thanks">Thanks for supporting us!</div>
+  <div class="thanks">Thanks for supporting</div>
 
   <div class="policy">
-    <p>All reviews are voluntary and for feedback purposes only.</p>
+    <p>All reviews are voluntary, and for feedback purposes only.</p>
     <p>By using this page, you agree that reviews reflect personal experience only.</p>
   </div>
 
-  <div class="park" aria-hidden="true">
-    <!-- Park SVG same as before -->
-    <svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-      <defs><style>.g-fill{ fill: #689F38; }</style></defs>
-      <path class="g-fill" d="M0,180C80,160 160,150 260,160C360,170 460,145 560,160C660,175 760,150 860,160C920,166 980,160 1000,160L1000,300 L0,300 Z"/>
-      <path class="g-fill" d="M0,200Q80,180 160,190T320,185T480,190T640,185T800,195T960,190L1000,220 L1000,300 L0,300 Z"/>
-      <rect x="0" y="230" width="1000" height="70" fill="#000" class="fade"/>
-    </svg>
-  </div>
+  <script type="module">
+    // Import Supabase client
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-  <script>
-    const reviews = [
-      "Komal Caterers is simply outstanding! The entire staff was so professional and attentive during my brother's birthday party. Full marks for their seamless service!",
-      "The food at Komal Caterers is genuinely delicious! Every dish was flavourful and prepared perfectly. It was the highlight of our recent anniversary celebration.",
-      "Hosting my bestie's birthday at Komal Caterers was the best decision. The event was exceptionally well-managed. Absolutely professional execution!",
-      "The staff here truly defines professionalism. They managed the crowd and service with such grace. All credit goes to Komal Caterers for their excellent team.",
-      "A delightful experience! Delicious food, perfect service, and an amazing setup. A must-try catering service for special occasions."
-    ];
+    const SUPABASE_URL = 'https://cwbvxvsutndgzryktgds.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3YnZ4dnN1dG5kZ3pyeWt0Z2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI0NDgwOTMsImV4cCI6MjA3ODAyNDA5M30.6NSOKaG09SyWnT1JS0Zl1627fx7bFWnCsXQGS19XijE';
 
-    const randomReview = reviews[Math.floor(Math.random() * reviews.length)];
-    document.getElementById("reviewText").innerText = randomReview;
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    document.getElementById("copyBtn").addEventListener("click", async function() {
+    const reviewText = document.getElementById('reviewText');
+    const copyBtn = document.getElementById('copyBtn');
+
+    async function fetchReview() {
       try {
-        await navigator.clipboard.writeText(randomReview);
-        this.innerText = "Copied ✓";
-        setTimeout(() => this.innerText = "Copy Text", 2000);
+        // Step 1: Get first unused review (order by id)
+        const { data, error } = await supabase
+          .from('reviews')
+          .select('*')
+          .eq('is_used', false)
+          .order('id', { ascending: true })
+          .limit(1);
+
+        if (error) throw error;
+
+        if (!data || data.length === 0) {
+          reviewText.innerText = "No more reviews available.";
+          copyBtn.style.display = "none";
+          return;
+        }
+
+        const review = data[0];
+        reviewText.innerText = review.review_text;
+
+        // Step 2: Mark review as used
+        await supabase
+          .from('reviews')
+          .update({ is_used: true })
+          .eq('id', review.id);
+
+        // Step 3: Copy function
+        copyBtn.addEventListener("click", async function() {
+          try {
+            await navigator.clipboard.writeText(review.review_text);
+            this.innerText = "Copied ✓";
+            setTimeout(() => this.innerText = "Copy Text", 2000);
+          } catch (err) {
+            alert("Copy failed — please copy manually.");
+          }
+        });
+
       } catch (err) {
-        alert("Copy failed — please copy manually.");
+        console.error(err);
+        reviewText.innerText = "Error fetching review.";
       }
-    });
+    }
+
+    fetchReview();
   </script>
 </body>
 </html>
